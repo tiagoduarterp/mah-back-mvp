@@ -1,0 +1,12 @@
+{
+    "env": {
+        "MYSQL_HOST": "localhost",
+        "MYSQL_DB"       : "mydbteste",
+        "MYSQL_USER"     : "root",
+        "MYSQL_PW"       : "root",
+        "MYSQL_PORT"     :  3306,
+        "JWT_KEY"        : "teste",
+        "PORT"           : "3000",
+        "EMAIL"          : "MAH-5-back-end"
+    }
+  }
