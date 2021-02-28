@@ -1,10 +1,11 @@
 const jwt      = require("jsonwebtoken");
 const mysql    = require('../../mysql').pool;
-const bcrypt   = require('bcrypt')
+const bcrypt   = require('bcryptjs')
 const email    = require('./sendController')
-
+/* email(req.body.email,values[0].nickname, 'ola') */
 class oUser{
   constructor(){ }
+  
   async userLogin(req, res, next){
     try{
       let values
@@ -21,6 +22,7 @@ class oUser{
         values = result
          bcrypt.compare(req.body.password, result[0].password,
            (err, result)=>{
+             console.log('result', result)
              if(err){
                values = ''
                res.status(401).send({ message: 'Falha na autenticação'})
@@ -30,11 +32,9 @@ class oUser{
                 const token = jwt.sign({
                    email: req.body.email,
                    nivel:values[0].level,
-                   
                 },process.env.JWT_KEY,{expiresIn:"1h"}
                 )
                 const expiries = new Date().getTime()+((1000*(60*60))*1)
-                /* email(req.body.email,values[0].nickname, 'ola') */
                 res.status(200).json({
                     message:'Autenticado com sucesso',
                     token:token,
@@ -42,7 +42,6 @@ class oUser{
                     nivel:values[0].level,
                     email:req.body.email,
                     nickname:values[0].nickname
-                    
                 })
                 }catch(e){
                   values = ''
@@ -53,6 +52,8 @@ class oUser{
                         expire:''
                     })
                 }
+             }else{
+              res.status(500).send({ message: 'Falha na autenticação'})
              }
            } 
         )
@@ -98,7 +99,8 @@ class oUser{
                   res.status(201).send({
                     message:'cadastrado com sucesso',
                     usuario:req.body.username,
-                    id:result.insertId
+                    id:result.insertId,
+                    hash:hash
                 })
                 }
               )
@@ -123,3 +125,14 @@ class oUser{
 }//EndClass
 
 module.exports = new oUser();
+
+
+
+
+
+/* 
+
+$2a$10$yYrKLaojbpbwx1qz1ql2SOY/yYCPFPlVPNjOowjeZBrY9Cja9ZzDq
+$2a$10$yYrKLaojbpbwx1qz1ql2SOY/yYCPFPlVPNjOow
+
+*/
