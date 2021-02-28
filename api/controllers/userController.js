@@ -8,7 +8,7 @@ class oUser{
   async userLogin(req, res, next){
     try{
       let values
-    mysql.getConnection((error, conn) =>{
+  await  mysql.getConnection((error, conn) =>{
       if(error) {return res.status(500).send({error: error})}
       conn.query('SELECT * FROM users WHERE email = ?',
       [req.body.email],
@@ -19,7 +19,7 @@ class oUser{
           return res.status(401).send({ message: 'Falha na autenticação'})
         }
         values = result
-        bcrypt.compare(req.body.password, result[0].password,
+       await bcrypt.compare(req.body.password, result[0].password,
            (err, result)=>{
              if(err){
                values = ''
