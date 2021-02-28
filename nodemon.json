@@ -6,7 +6,7 @@
         "MYSQL_PW"       : "root",
         "MYSQL_PORT"     :  3306,
         "JWT_KEY"        : "teste",
-        "PORT"           : "3000",
+        "PORT"           : "8080",
         "EMAIL"          : "MAH-5-back-end"
     }
   }
