@@ -62,6 +62,7 @@ class oUser{
     })
     res.status(500).json({
       message:'Aqui error',
+      teste:req.body
   })
   }
 
