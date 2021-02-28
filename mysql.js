@@ -5,7 +5,7 @@ let pool = mysql.createPool({
     "password" : process.env.MYSQL_PW,
     "database" : process.env.MYSQL_DB,
     "host"     : process.env.MYSQL_HOST,
-    "port"     : process.env.MYSQL_PORT
+    /* "port"     : process.env.MYSQL_PORT */
 })
 
 /* mysql://
