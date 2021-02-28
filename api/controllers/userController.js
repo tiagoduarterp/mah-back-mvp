@@ -19,7 +19,7 @@ class oUser{
           return res.status(401).send({ message: 'Falha na autenticação'})
         }
         values = result
-       await bcrypt.compare(req.body.password, result[0].password,
+         bcrypt.compare(req.body.password, result[0].password,
            (err, result)=>{
              if(err){
                values = ''
