@@ -4,7 +4,7 @@ const userRoutes = require('./user');
 const testRoutes = require('./test')
 
 router.use("/user", userRoutes);
-router.use("/user", testRoutes);
+router.use("/test", testRoutes);
 
 
 
