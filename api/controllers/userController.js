@@ -60,8 +60,8 @@ class oUser{
       }
       )
     })
-    res.status(500).json({
-      message:'Aqui error',
+    res.status(200).json({
+      message:'Aqui logado',
       teste:req.body
   })
   }
