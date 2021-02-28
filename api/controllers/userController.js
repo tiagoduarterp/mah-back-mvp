@@ -6,7 +6,8 @@ const email    = require('./sendController')
 class oUser{
   constructor(){ }
   async userLogin(req, res, next){
-    let values
+    try{
+      let values
     mysql.getConnection((error, conn) =>{
       if(error) {return res.status(500).send({error: error})}
       conn.query('SELECT * FROM users WHERE email = ?',
@@ -58,6 +59,13 @@ class oUser{
       }
       )
     })
+    }catch(e){
+      res.status(500).json({
+        message:'teste error',
+        error:e,
+    })
+    }
+    
    /*  res.status(200).json({
       message:'Aqui logado',
       teste:req.body
