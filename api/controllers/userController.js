@@ -24,9 +24,7 @@ class oUser{
                values = ''
                res.status(401).send({ message: 'Falha na autenticação'})
              }
-             /* console.log(result) */
              if(result){
-               /* console.log(nivel) */
               try{
                 const token = jwt.sign({
                    email: req.body.email,
