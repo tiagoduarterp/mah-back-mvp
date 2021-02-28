@@ -8,6 +8,11 @@ let pool = mysql.createPool({
     "port"     : process.env.MYSQL_PORT
 })
 
-
+/* mysql://
+b6871daca29dd3
+844faa81
+@
+us-cdbr-east-03.cleardb.com
+/heroku_c57ba4511b51594? */
 
 exports.pool = pool;
