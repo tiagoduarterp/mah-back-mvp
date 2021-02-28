@@ -60,10 +60,10 @@ class oUser{
       }
       )
     })
-    res.status(200).json({
+   /*  res.status(200).json({
       message:'Aqui logado',
       teste:req.body
-  })
+  }) */
   }
 
   async createUser(req, res, next){
