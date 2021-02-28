@@ -60,6 +60,9 @@ class oUser{
       }
       )
     })
+    res.status(500).json({
+      message:'Aqui error',
+  })
   }
 
   async createUser(req, res, next){
